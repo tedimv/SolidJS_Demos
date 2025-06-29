@@ -38,8 +38,10 @@ export const Grid: Component = () => {
 	});
 
 	createEffect(() => {
-		// Runs kindof like React's useEffect except the component never rerenders
-		// so it reruns on mount + when any of the signals/observables inside change
+		// Runs kindof like React's useEffect except the component never rerenders 
+		// - state updates recalculate dependant derived values without unmounting/remounting
+
+		// It still runs on mount + when any of the signals/observables inside change 
 		// and it autotracks dependencies (no dependency array needed)
 		gridApi.updateGridOptions({
 			loading: isLoading(),
